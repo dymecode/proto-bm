@@ -6,19 +6,27 @@
     <div class="title">proto-bm</div>
     <div class="columns">
       <div class="column is-4">
-        <p class="is-size-5">Sandbox playground for prototype Vue components with Bulma.</p>
+        <p class="is-size-5">Sandbox playground for prototyping Vue components with Bulma.</p>
       </div>
       <div class="column is-3 is-offset-2">
         <label class="heading">Layouts</label>
         <ul>
           <li>
-            <a href="/layouts/imr">Full Hero</a>
+            <a :href="$root.appUrl + '/layouts/full_hero.html'">Full Hero</a>
           </li>
         </ul>
       </div>
       <div class="column is-3">
         <label class="heading">Documentation</label>
         <ul>
+          <li>
+            <a
+              href="https://parceljs.org/getting_started.html"
+              target="_blank"
+              rel="noopener"
+              >Parcel</a
+            >
+          </li>
           <li>
             <a
               href="https://bulma.io/"
@@ -50,7 +58,7 @@
 <script>
 import Mixins from "./mixins";
 export default {
-  name: "App",
+  name: "HelloWorld",
   mixins: [Mixins]
 };
 </script>

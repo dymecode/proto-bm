@@ -2,10 +2,10 @@
   "name": "proto-bm",
   "version": "0.1.0",
   "private": true,
-  "description": "Layout prototyping in Bulma",
+  "description": "Layout prototyping with Bulma and Parcel",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "dev": "parcel src/index.html src/layouts/*.html",
+    "build": "parcel build src/index.html src/layouts/*.html"
   },
   "license": "MIT",
   "dependencies": {
@@ -19,7 +19,9 @@
     "@vue/component-compiler-utils": "^3.2.0",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.34.1",
-    "vue-router": "^3.5.1",
     "vue-template-compiler": "^2.6.13"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }
