@@ -16,8 +16,11 @@
         </div>
         <div id="navbarMenuHeroC" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active">
+            <a :href="$root.appUrl" class="navbar-item">
               Home
+            </a>
+            <a class="navbar-item is-active">
+              Full Hero
             </a>
             <a class="navbar-item">
               Examples
@@ -56,7 +59,7 @@
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
-          <li class="is-active"><a>Overview</a></li>
+          <li class="is-active"><a class="has-text-dark">Overview</a></li>
           <li><a>Modifiers</a></li>
           <li><a>Grid</a></li>
           <li><a>Elements</a></li>
