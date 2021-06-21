@@ -1,6 +1,10 @@
 {
   "name": "proto-bm",
   "version": "0.1.0",
+  "author": {
+    "name": "Darren Ee Yuen Ming",
+    "email": "darren.ee@dymecode.com"
+  },
   "private": true,
   "description": "Layout prototyping with Bulma and Parcel",
   "scripts": {
