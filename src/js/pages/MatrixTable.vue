@@ -11,16 +11,25 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="(row, index) in regions">
-            <tr :key="index">
+          <template v-for="(row, i) in regions">
+            <tr :key="i">
               <th>{{ row }}</th>
-              <template v-for="(rowcol, index) in regions">
-                <td :key="index">
+              <template v-for="(rowcol, j) in regions">
+                <td :key="j">
                   <div class="void-cell" v-if="rowcol === row"></div>
                   <div class="empty-cell has-background-light" v-else>
                     <button
-                    class="button is-light is-small"
-                    @click="reveal(row,rowcol)">
+                      class="button is-light is-small"
+                      @click="reveal(row, rowcol)"
+                      v-if="j < i"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <button
+                      class="button is-light is-small"
+                      @click="reveal(rowcol, row)"
+                      v-if="j > i"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -30,8 +39,9 @@
           </template>
         </tbody>
       </table>
-      <span class="title">{{cross}}</span>
     </div>
+    <span class="title">{{ cross }}</span>
+
   </section>
 </template>
 
@@ -40,7 +50,7 @@
     name: "MatrixTable",
     data() {
       return {
-        cross: '',
+        cross: "",
         regions: [
           "Europe",
           "North Africa",
@@ -55,8 +65,9 @@
       };
     },
     methods: {
-      reveal(x,y){
-        this.cross = x + '/' + y;
+      reveal(x, y) {
+        this.cross = x + "/" + y;
+        this.showModal();
       }
     }
   };
