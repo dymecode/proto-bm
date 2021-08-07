@@ -18,7 +18,9 @@
                 <td :key="index">
                   <div class="void-cell" v-if="rowcol === row"></div>
                   <div class="empty-cell has-background-light" v-else>
-                    <button class="button is-light is-small">
+                    <button
+                    class="button is-light is-small"
+                    @click="reveal(row,rowcol)">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -28,6 +30,7 @@
           </template>
         </tbody>
       </table>
+      <span class="title">{{cross}}</span>
     </div>
   </section>
 </template>
@@ -37,6 +40,7 @@
     name: "MatrixTable",
     data() {
       return {
+        cross: '',
         regions: [
           "Europe",
           "North Africa",
@@ -49,6 +53,11 @@
           "South Asia"
         ]
       };
+    },
+    methods: {
+      reveal(x,y){
+        this.cross = x + '/' + y;
+      }
     }
   };
 </script>
