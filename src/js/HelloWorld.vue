@@ -14,6 +14,9 @@
           <li>
             <a :href="$root.appUrl + '/layouts/full_hero.html'">Full Hero</a>
           </li>
+          <li>
+            <a :href="$root.appUrl + '/layouts/matrix_table.html'">Matrix Table</a>
+          </li>
         </ul>
       </div>
       <div class="column is-3">
