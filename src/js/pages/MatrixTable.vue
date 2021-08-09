@@ -43,8 +43,12 @@
       </div>
     </div>
     <div class="column is-4">
-      <p class="title">{{ crossName }}</p>
-      <p class="subtitle">{{ crossId }}</p>
+      <div class="card">
+        <div class="card-content">
+          <p class="title">{{ crossName }}</p>
+          <p class="subtitle">{{ crossId }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -73,7 +77,6 @@
       reveal(x, y) {
         this.crossName = x.name + "/" + y.name;
         this.crossId = x.id + "-" + y.id;
-        this.showModal();
       }
     }
   };
@@ -86,48 +89,48 @@
     .table-container {
       overflow: auto;
       scrollbar-width: thin;
-    .table {
-      table-layout: fixed;
+      .table {
+        table-layout: fixed;
 
-      thead {
-        th {
-          width: 6rem;
-          height: 4rem;
-          font-size: 0.75rem;
-          line-height: 1.2;
-        }
-      }
-      tbody {
-        th {
-          width: 6rem;
-          height: 4rem;
-          font-size: 0.75rem;
-          line-height: 1.2;
-        }
-        td {
-          width: 6rem;
-          height: 4rem;
-          font-size: 0.75rem;
-          line-height: 1.2;
-          padding: 0;
-
-          .void-cell {
-            width: 100%;
-            height: 100%;
-            background-color: var.$gray-500;
-          }
-
-          .empty-cell {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        thead {
+          th {
+            width: 6rem;
+            height: 4rem;
+            font-size: 0.75rem;
+            line-height: 1.2;
           }
         }
+        tbody {
+          th {
+            width: 6rem;
+            height: 4rem;
+            font-size: 0.75rem;
+            line-height: 1.2;
+          }
+          td {
+            width: 6rem;
+            height: 4rem;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            padding: 0;
+
+            .void-cell {
+              width: 100%;
+              height: 100%;
+              background-color: var.$gray-500;
+            }
+
+            .empty-cell {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
       }
-    }
     }
   }
 </style>
