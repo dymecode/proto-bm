@@ -14,6 +14,9 @@
           <li>
             <a :href="$root.appUrl + '/layouts/full_hero.html'">Full Hero</a>
           </li>
+          <li>
+            <a :href="$root.appUrl + '/layouts/matrix_table.html'">Matrix Table</a>
+          </li>
         </ul>
       </div>
       <div class="column is-3">
@@ -63,25 +66,29 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@use "../sass/variables" as var;
 .hello {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #595959;
+  color: var.$gray-600;
+  background-color: var.$gray-100;
   width: 76vw;
   font-size: 1rem;
   font-family: "Newsreader", serif;
   font-kerning: auto;
   padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var.$shadow;
 
   .heading {
       font-family: "Newsreader", serif;
     text-align: left;
     width: 100%;
     font-weight: 700;
-    color: lighten(#595959, 10%);
+    color: lighten(var.$gray-600, 10%);
   }
 
   ul {
@@ -98,7 +105,7 @@ export default {
   }
 
   .footer {
-    margin: 2em 0;
+    margin: 2em 0 0;
     padding: 0.5rem;
     border-top: 1px solid #59595955;
     color: #59595999;

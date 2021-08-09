@@ -1,5 +1,7 @@
 @charset "utf-8";
 //@import "./fonts";
+
+@use "variables" as var;
 @import url('https://fonts.googleapis.com/css2?family=Newsreader&display=swap');
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
 // Customization
@@ -11,10 +13,10 @@
 // 1. Import the initial variables
 @import "../../node_modules/bulma/sass/utilities/all";
 
-@import "./colorCustom";
+
 $family-serif: 'Newsreader',serif;
 $family-sans-serif: "Arial Nova", sans-serif;
-$body-bg: #e0e0e0;
+$body-bg: var.$gray-200;
 /*
 // 2. Set your own initial variables
 // Update the blue shade, used for links
@@ -36,7 +38,7 @@ $primary-invert: $pink-invert;
 @import "../../node_modules/bulma/bulma";
 
 body {
-  background-color: $body-bg;
+  background-color: var.$body-bg;
   width: 100vw;
   height: 100vh;
 }
