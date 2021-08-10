@@ -43,12 +43,55 @@
       </div>
     </div>
     <div class="column is-4">
-      <div class="card">
-        <div class="card-content">
-          <p class="title">{{ crossName }}</p>
-          <p class="subtitle">{{ crossId }}</p>
+      <article class="message is-dark" v-if="crossId.length > 0">
+        <div class="message-header">
+          {{ crossId }}
+          <button class="delete" @click="reset"></button>
         </div>
-      </div>
+        <div class="message-body">
+          <p class="title is-4">{{ crossName }}</p>
+          <template v-if="getLink(crossId)"></template>
+          <template v-else>
+            <form @submit.prevent>
+              <label class="label">Range</label>
+              <div class="buttons has-addons">
+                <template v-for="(range, k) in rangeTypes">
+                  <button
+                    :class="rangeButtonClass(range)"
+                    @click="selectRange(range)"
+                    :key="k"
+                  >
+                    <span>{{ range }}</span>
+                  </button>
+                </template>
+              </div>
+
+              <hr class="my-1" />
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-small is-text" @click="reset">Cancel</button>
+                </div>
+                <div class="control ml-auto">
+                  <button class="button is-small is-success">Submit</button>
+                </div>
+              </div>
+            </form>
+          </template>
+        </div>
+      </article>
+      <article class="message is-dark" v-else>
+        <div class="message-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta
+          nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida
+          purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac
+          <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+          sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi
+          magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales
+          sem.
+        </div>
+      </article>
     </div>
   </div>
 </template>
@@ -58,6 +101,7 @@
     name: "MatrixTable",
     data() {
       return {
+        rangeTypes: ["Long", "Medium", "Short"],
         crossName: "",
         crossId: "",
         regions: [
@@ -70,13 +114,38 @@
           { id: 7, name: "South America" },
           { id: 8, name: "South East Asia" },
           { id: 9, name: "South Asia" }
-        ]
+        ],
+        links: [],
+        form: {
+          ref: "",
+          range: ""
+        }
       };
     },
     methods: {
       reveal(x, y) {
         this.crossName = x.name + "/" + y.name;
         this.crossId = x.id + "-" + y.id;
+      },
+      reset() {
+        this.crossName = "";
+        this.crossId = "";
+      },
+      getLink(ref) {
+        if (this.links.length > 0) {
+          this.form = this.links.find(el => el.ref === ref);
+          return true;
+        } else {
+          return false;
+        }
+      },
+      selectRange(val) {
+        this.form.range = val;
+      },
+      rangeButtonClass(val) {
+        return this.form.range === val
+          ? "button is-small is-info is-selected"
+          : "button is-small is-outlined";
       }
     }
   };
@@ -131,6 +200,9 @@
           }
         }
       }
+    }
+    .message {
+      box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.2);
     }
   }
 </style>
